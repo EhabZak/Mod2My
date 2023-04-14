@@ -35,19 +35,15 @@ const recipes = {
 /*************************** FUNCTION TO REFACTOR ****************************/
 function bakeAndSellPies(pieType, pieQuantity, profitMargin) {
   // Find the recipe for the pieType specified
+
   const recipe = recipes[pieType];
-  // Bake the number of pies specified by the pieQuantity
-  for (let i = 0; i < pieQuantity; i++) {
-    // Print the ingredients for each ingredient in the recipe
-    let combiningMsg = `Combining ingredients for ${pieType}: `
-    combiningMsg += recipe.map(ingredient => ingredient.name).join(', ');
-    console.log(combiningMsg);
 
-    // Print the nth pie that was baked
-    console.log(`Baked pie ${i + 1}!`);
-  }
+  // Bake the number of pies specified by the pieQuantity // helper 1
 
-  // Print the cost of each pie based on the cost of each ingredient
+  piePrint(pieType, pieQuantity,recipe)
+
+  // Print the cost of each pie based on the cost of each ingredient //helper 2
+
   const costOfPie = recipe.reduce((prev, current) => {
     return prev + current.cost;
   }, recipe[0].cost);
@@ -56,15 +52,27 @@ function bakeAndSellPies(pieType, pieQuantity, profitMargin) {
   // Calculate the total cost of all the pies
   const totalCost = costOfPie * pieQuantity;
 
-  // Print the total revenue calculated using the given profitMargin
+  // Print the total revenue calculated using the given profitMargin //helper 3
   const revenue = totalCost * (profitMargin || 1.2);
   console.log(`Sold ${pieQuantity} pies for $${revenue.toFixed(2)}!`);
 }
+function piePrint(Type, Quantity, recipe) {
+  for (let i = 0; i < Quantity; i++) {
+    // Print the ingredients for each ingredient in the recipe
+
+    let combiningMsg = `Combining ingredients for ${Type}: ` /// helper 4
+    combiningMsg += recipe.map(ingredient => ingredient.name).join(', ');
+    console.log(combiningMsg);
+
+    // Print the nth pie that was baked
+    console.log(`Baked pie ${i + 1}!`);
+  }
+}
 
 /******************************* LOCAL TESTS *******************************/
-// bakeAndSellPies("applePie", 5, 2.5);
-// bakeAndSellPies("pumpkinPie", 2);
-// bakeAndSellPies("cherryPie", 7, 1.7);
+console.log(bakeAndSellPies("applePie", 5, 2.5));
+console.log(bakeAndSellPies("pumpkinPie", 2));
+console.log(bakeAndSellPies("cherryPie", 7, 1.7));
 
 /**************************************************************************/
 /* DO NOT CHANGE THE CODE BELOW */

@@ -6,5 +6,8 @@ function say(name) {
 helloMessage = { message: 'Hello,' };
 heyThereMessage = { message: 'Hey there,' };
 
-say(helloMessage, "John");
-say(heyThereMessage, "Michael");
+applyReturn = helloMessage.call
+
+say.call(helloMessage, "John");
+say.call(heyThereMessage, "Michael");
+

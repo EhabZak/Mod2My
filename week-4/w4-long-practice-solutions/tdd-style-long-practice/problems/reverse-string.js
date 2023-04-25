@@ -1,4 +1,6 @@
-module.exports = function reverseString(string) {
+module.exports =  {reverseString }
+
+  function reverseString(string) {
   //!!START
   if (typeof string !== "string") {
     throw new TypeError(
@@ -8,3 +10,7 @@ module.exports = function reverseString(string) {
   return [...string].reverse().join("");
   //!!END
 };
+
+
+const reversedString = reverseString("fun")
+console.log(reversedString)
